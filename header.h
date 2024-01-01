@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/01 18:39:16 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/01 19:45:39 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct s_data
 {
-	int	*a;
-	int	*b;
+	int	**a;
+	int	**b;
 	int	*hm_a;
 	int	*hm_b;
 	int	*golden_hm;

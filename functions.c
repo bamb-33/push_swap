@@ -6,24 +6,28 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 16:11:40 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/01 18:52:18 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/01 20:17:40 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	sa(int *a, t_data *var)
+void	sa(int **a, t_data *var)
 {
-	int	tmp;
+	int	t1;
+	int	t2;
 	int	len;
 
 	len = stack_len(var->hm_a);
-	tmp = a[len - 1];
-	a[len - 1] = a[len - 2];
-	a[len - 2] = tmp;
+	t1 = a[len - 1][0];
+	t2 = a[len - 1][1];
+	a[len - 1][0] = a[len - 2][0];
+	a[len - 1][1] = a[len - 2][1];
+	a[len - 2][0] = t1;
+	a[len - 2][1] = t2;
 }
 
-void	sb(int *b, t_data *var)
+void	sb(int **b, t_data *var)
 {
-	int	tmp;
+	int	*tmp;
 	int	len;
 
 	len = stack_len(var->hm_b);
@@ -32,7 +36,7 @@ void	sb(int *b, t_data *var)
 	b[len - 2] = tmp;
 }
 
-void	pa(int *a, int *b, int ac, t_data *var)
+void	pa(int **a, int **b, int ac, t_data *var)
 {
 	int	len_a;
 	int	len_b;
@@ -49,7 +53,7 @@ void	pa(int *a, int *b, int ac, t_data *var)
 	}
 }
 
-void	pb(int *a, int *b, int ac, t_data *var)
+void	pb(int **a, int **b, int ac, t_data *var)
 {
 	int	len_a;
 	int	len_b;
@@ -60,18 +64,18 @@ void	pb(int *a, int *b, int ac, t_data *var)
 		printf("stack is full");
 	else
 	{
-		a[len_b] = b[len_a - 1];
+		b[len_b] = a[len_a - 1];
 		var->hm_a[len_a - 1] = 0;
 		var->hm_b[len_b] = 1;
 	}
 }
 
-void	ra(int *a, t_data *var)
+void	ra(int **a, t_data *var)
 {
 	int	i;
 	int	len;
-	int	tmp1;
-	int	tmp2;
+	int	*tmp1;
+	int	*tmp2;
 
 	i = 0;
 	len = stack_len(var->hm_a);
@@ -95,12 +99,12 @@ void	ra(int *a, t_data *var)
 	}
 }
 
-void	rb(int *b, t_data *var)
+void	rb(int **b, t_data *var)
 {
 	int	i;
 	int	len;
-	int	tmp1;
-	int	tmp2;
+	int	*tmp1;
+	int	*tmp2;
 
 	i = 0;
 	len = stack_len(var->hm_b);
@@ -124,12 +128,12 @@ void	rb(int *b, t_data *var)
 	}
 }
 
-void	rra(int *a, t_data *var)
+void	rra(int **a, t_data *var)
 {
 	int	i;
 	int	len;
-	int	tmp1;
-	int	tmp2;
+	int	*tmp1;
+	int	*tmp2;
 
 	i = 0;
 	len = stack_len(var->hm_a);
@@ -152,12 +156,12 @@ void	rra(int *a, t_data *var)
 	}
 }
 
-void	rrb(int *b, t_data *var)
+void	rrb(int **b, t_data *var)
 {
 	int	i;
 	int	len;
-	int	tmp1;
-	int	tmp2;
+	int	*tmp1;
+	int	*tmp2;
 
 	i = 0;
 	len = stack_len(var->hm_b);
