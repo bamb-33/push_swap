@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/02 19:28:13 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/04 20:04:27 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,23 @@
 
 void print_stack(t_data var)
 {
-	// for (int i = var.stack_size - 1; i >= 0; i--)
-	// {
-	// 	printf("%d|  %d/%d || %d|  %d/%d\n", var.a[i][0], var.a[i][1], var.hm_a[i], var.b[i][0], var.b[i][1], var.hm_b[i]);
-	// }
-	// printf("---------------\n\n");
+	for (int i = var.stack_size - 1; i >= 0; i--)
+	{
+		printf("%d|  %d || %d|  %d\n", var.a[i][0], var.hm_a[i], var.b[i][0], var.hm_b[i]);
+	}
+	printf("---------------\n\n");
 	// printf("pb\n");
-    // printf("ra\n");
-    // printf("rrb\n");
-    // printf("pa\n");
-    // printf("ra\n");
     // printf("pb\n");
+    // printf("sa\n");
     // printf("ra\n");
-    // printf("ra\n");
-    // printf("rrb\n");
+    // printf("rra\n");
     // printf("pa\n");
-    // printf("ra\n");
-	// write(1, "sa\n", 3);
-	write(1, "pb\n", 3);
-    write(1, "ra\n", 3);
-    write(1, "rrb\n", 4);
-    write(1, "pa\n", 3);
-    write(1, "ra\n", 3);
-    write(1, "pb\n", 3);
-    write(1, "ra\n", 3);
-    write(1, "ra\n", 3);
-    write(1, "rrb\n", 4);
-    write(1, "pa\n", 3);
-    write(1, "ra\n", 3);
+    // printf("rra\n");
+    // printf("pa\n");
+    // printf("rra\n");
 }
 
-int	main(int ac, char *av[])
+t_data	init(int ac, char **av)
 {
 	int		i;
 	t_data	var;
@@ -55,27 +41,69 @@ int	main(int ac, char *av[])
 	var.stack_size = ac - 1;
 	while (i < (ac - 1))
 	{
-		var.a[i] = (int *) malloc (sizeof(int) * 2);
-		var.b[i] = (int *) malloc (sizeof(int) * 2);
+		var.a[i] = (int *) malloc (sizeof(int) * 3);
+		var.b[i] = (int *) malloc (sizeof(int) * 3);
 		i++;
 	}
 	var.hm_a = (int *) malloc (sizeof(int) * (ac - 1));
 	var.hm_b = (int *) malloc (sizeof(int) * (ac - 1));
 	i = 1;
-	ac--;
-	while (ac > 0)
+	while (ac - 1 > 0)
 	{
-		var.a[ac - 1][0] = ft_atoi(av[i]);
-		var.a[ac - 1][1] = i;
+		var.a[ac - 2][0] = ft_atoi(av[i]);
 		var.hm_a[i - 1] = 1;
 		var.hm_b[i - 1] = 0;
 		ac--;
 		i++;
 	}
+	return (var);
+}
+
+void	issorted(t_data *x)
+{
+	int	i;
+	int	b;
+
+	i = 0;
+	b = 0;
+	if (i == stack_len(x->hm_b))
+		b = stack_len(x->hm_b) - 1;
+	while (i < stack_len(x->hm_b))
+	{
+		if (x->b[b][0] < x->b[i][0])
+			b = i;
+		i++;
+	}
+	b_sort(b, x);
+	while (sort(x) == 0)
+		sa(x->a, x);
+}
+
+int	main(int ac, char *av[])
+{
+	int		i;
+	int		a;
+	t_data	var;
+
+	i = 0;
+	var = init(ac, av);
+	if (stack_len(var.hm_a) <= 3)
+		issorted(&var);
+	else
+	{
+		pb(var.a, var.b, var.stack_size, &var);
+		pb(var.a, var.b, var.stack_size, &var);
+		algo(&var);
+		issorted(&var);
+		small_stack(&var);
+		while (i < stack_len(var.hm_a))
+		{
+			if (var.a[a][0] > var.a[i][0])
+				a = i;
+			i++;
+		}
+		a_sort(a, &var);
+	}
 	// print_stack(var);
-	// printf("--------\n");
-	merge(var.stack_size, &var);
-	// printf("--------\n\n");
-	// print_stack(var);
-	// print_stack(var);
+	return (0);
 }

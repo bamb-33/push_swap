@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/02 19:02:35 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/04 18:43:44 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,31 @@ void	sa(int **a, t_data *var);
 void	sb(int **b, t_data *var);
 void	pa(int **a, int **b, int ac, t_data *var);
 void	pb(int **a, int **b, int ac, t_data *var);
-void	ra(int **a, t_data *var);
-void	rb(int **b, t_data *var);
-void	rra(int **a, t_data *var);
-void	rrb(int **b, t_data *var);
+void	ra(int **a, t_data *var, int flag);
+void	rb(int **b, t_data *var, int flag);
+void	rra(int **a, t_data *var, int flag);
+void	rrb(int **b, t_data *var, int flag);
+void	rr(t_data *var);
+void	rrr(t_data *var);
 
-//stack_len
+//functions
 int		stack_len(int *stack);
+int		**bubble_sort(int **stack, int len_b);
 
-//merge
-void	merge(int ac, t_data *var);
+//big_stack
+void	algo(t_data *x);
+
+//move
+int		move(int a, int b, int flag, t_data *x);
+
+//small_stack
+void	small_stack(t_data *x);
+void	a_sort(int a, t_data *x);
+void	b_sort(int b, t_data *x);
+int		sort(t_data *x);
+
+//main
+void	issorted(t_data *x);
 
 //tmp
 void	print_stack(t_data var);
