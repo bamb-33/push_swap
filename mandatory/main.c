@@ -6,11 +6,11 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 18:07:38 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 19:53:41 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 void print_stack(t_data var)
 {
@@ -73,20 +73,14 @@ int	main(int ac, char *av[])
 	while (i < ac)
 	{
 		if (av[i][0] == 0)
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
+			error_exit();
 		str = ft_strjoin(str, av[i], ' ');
 		i++;
 	}
 	integers = ft_split(str, ' ');
 	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
+		error_exit();
 	if (stack_len(var.hm_a) <= 3)
 		issorted(&var);
 	else
@@ -97,6 +91,6 @@ int	main(int ac, char *av[])
 	}
 	// print_stack(var);
 	free_t_data(var);
-	// system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }

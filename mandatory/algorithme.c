@@ -6,11 +6,11 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 08:55:00 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 12:04:21 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 18:49:59 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 void	final_move(int a, t_data *x)
 {
@@ -40,10 +40,6 @@ void	final_move(int a, t_data *x)
 
 void	small_stack(t_data *x)
 {
-	/*
-		- sort both stacks (a ascending order, b descennding order).
-		- put integers from stack b to b in so the stack will be sorted
-	*/
 	int	i;
 	int	a;
 
@@ -92,10 +88,6 @@ int	**stack_clone(t_data *x)
 
 int	finder(int index_a, t_data *x)
 {
-	/*
-		i am looking for the the biggest number that is smaller than this
-		number (x->a[len][0]) in stack B.
-	*/
 	int	index_b;
 	int	len_b;
 	int	**s;
@@ -121,12 +113,6 @@ int	finder(int index_a, t_data *x)
 
 void	algorithme(t_data *x)
 {
-	/*
-		- a way to know how many moves i ll need to move the number
-		to its right place so i can choose the number w the lowest number of
-		moves.
-		- algorithme to actually put the number in its right position.
-	*/
 	int	i;
 	int	len_a;
 	int	flag;

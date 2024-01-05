@@ -6,11 +6,11 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:33:28 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 09:43:56 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 18:49:23 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 int	**bubble_sort(int **stack, int len_b)
 {

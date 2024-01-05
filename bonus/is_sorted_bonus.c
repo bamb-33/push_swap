@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   is_sorted_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 10:02:27 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 11:46:48 by naadou           ###   ########.fr       */
+/*   Created: 2024/01/05 20:31:53 by naadou            #+#    #+#             */
+/*   Updated: 2024/01/05 20:38:37 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
-void	free_t_data(t_data x)
+int	is_sorted(t_data *x)
 {
 	int	i;
 
 	i = 0;
-	while (i < x.stack_size)
+	while (i < stack_len(x->hm_a) - 1)
 	{
-		free(x.a[i]);
-		free(x.b[i]);
+		if (x->a[i][0] < x->a[i + 1][0])
+			return (0);
 		i++;
 	}
-	free(x.a);
-	free(x.b);
-	free(x.hm_a);
-	free(x.hm_b);
-}
-
-void	free_stack_clone(int **x, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		free(x[i]);
-		i++;
-	}
-	free(x);
+	return (1);
 }

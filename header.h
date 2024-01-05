@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 16:23:08 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 21:14:02 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	rrr(t_data *var);
 
 //error
 int		error(t_data var, char **av);
+void	error_exit(void);
 // long long int	ft_atoi(const char *str);
 
 //big_stack
@@ -66,6 +67,25 @@ int		str_len(char **stack);
 //free
 void	free_t_data(t_data x);
 void	free_stack_clone(int **x, int len);
+
+//bonus
+//ft_call
+void	ft_call(char *str, t_data *x);
+
+//is_sorted
+int		is_sorted(t_data *x);
+
+//a_b_functions_bonus
+void	sa_bonus(int **a, t_data *var);
+void	sb_bonus(int **b, t_data *var);
+void	pa_bonus(int **a, int **b, int ac, t_data *var);
+void	pb_bonus(int **a, int **b, int ac, t_data *var);
+void	ra_bonus(int **a, t_data *var);
+void	rb_bonus(int **b, t_data *var);
+void	rra_bonus(int **a, t_data *var);
+void	rrb_bonus(int **b, t_data *var);
+void	rr_bonus(t_data *var);
+void	rrr_bonus(t_data *var);
 
 //tmp
 void	print_stack(t_data var);

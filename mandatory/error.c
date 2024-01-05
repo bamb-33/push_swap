@@ -6,36 +6,17 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:48:46 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 17:58:17 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 18:52:35 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
-// long long int	ft_atoi(const char *str)
-// {
-// 	int	i;
-// 	int	sign;
-// 	long long int	result;
-
-// 	i = 0;
-// 	sign = 1;
-// 	result = 0;
-// 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-// 		i++;
-// 	if (str[i] == '+' || str[i] == '-')
-// 	{
-// 		if (str[i] == '-')
-// 			sign *= -1;
-// 		i++;
-// 	}
-// 	while (str[i] >= '0' && str[i] <= '9')
-// 	{
-// 		result = (result * 10) + (str[i] - 48);
-// 		i++;
-// 	}
-// 	return (result * sign);
-// }
+void	error_exit(void)
+{
+	write(2, "Error\n", 6);
+	exit(0);
+}
 
 int	check_duplicates(int i, t_data var)
 {

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   a_functions.c                                      :+:      :+:    :+:   */
+/*   functions_a_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 16:11:40 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 11:25:54 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 21:13:36 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
-void	sa(int **a, t_data *var)
+void	sa_bonus(int **a, t_data *var)
 {
 	int	t1;
 	int	t2;
@@ -25,10 +25,9 @@ void	sa(int **a, t_data *var)
 	a[len - 1][1] = a[len - 2][1];
 	a[len - 2][0] = t1;
 	a[len - 2][1] = t2;
-	write(1, "sa\n", 3);
 }
 
-void	pa(int **a, int **b, int ac, t_data *var)
+void	pa_bonus(int **a, int **b, int ac, t_data *var)
 {
 	int	len_a;
 	int	len_b;
@@ -46,10 +45,9 @@ void	pa(int **a, int **b, int ac, t_data *var)
 		var->hm_b[len_b - 1] = 0;
 		var->hm_a[len_a] = 1;
 	}
-	write(1, "pa\n", 3);
 }
 
-void	ra(int **a, t_data *var, int flag)
+void	ra_bonus(int **a, t_data *var)
 {
 	int	i;
 	int	len;
@@ -75,11 +73,9 @@ void	ra(int **a, t_data *var, int flag)
 			a[i] = tmp2;
 		}
 	}
-	if (flag == 1)
-		write(1, "ra\n", 3);
 }
 
-void	rra(int **a, t_data *var, int flag)
+void	rra_bonus(int **a, t_data *var)
 {
 	int	i;
 	int	len;
@@ -105,13 +101,10 @@ void	rra(int **a, t_data *var, int flag)
 			a[len - 1] = tmp2;
 		}
 	}
-	if (flag == 1)
-		write(1, "rra\n", 4);
 }
 
-void	rr(t_data *var)
+void	rr_bonus(t_data *var)
 {
 	ra(var->a, var, 0);
 	rb(var->b, var, 0);
-	write(1, "rr\n", 3);
 }

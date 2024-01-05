@@ -6,11 +6,11 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:04:01 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/04 17:34:09 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 18:49:15 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 int	up(int *a, int *b, int flag, t_data *x)
 {

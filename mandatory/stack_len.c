@@ -6,11 +6,11 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 17:37:42 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 16:21:15 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 18:19:13 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 int	stack_len(int *stack)
 {
@@ -22,12 +22,12 @@ int	stack_len(int *stack)
 	return (i);
 }
 
-int	str_len(char **stack)
+int	str_len(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (stack[i])
+	while (str[i])
 		i++;
 	return (i);
 }
