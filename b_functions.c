@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:34:56 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/04 20:00:59 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 11:24:38 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	pb(int **a, int **b, int ac, t_data *var)
 {
 	int	len_a;
 	int	len_b;
+	int	*tmp;
 
 	len_a = stack_len(var->hm_a);
 	len_b = stack_len(var->hm_b);
@@ -35,7 +36,9 @@ void	pb(int **a, int **b, int ac, t_data *var)
 		return ;
 	else
 	{
+		tmp = b[len_b];
 		b[len_b] = a[len_a - 1];
+		a[len_a - 1] = tmp;
 		var->hm_a[len_a - 1] = 0;
 		var->hm_b[len_b] = 1;
 	}

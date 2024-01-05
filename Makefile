@@ -2,9 +2,9 @@
 # 	cc -I /usr/local/include main.c -L /usr/local/bin/  -lmlx -framework OpenGL -framework AppKit && ./a.out
 
 CC = cc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.c a_functions.c b_functions.c functions.c big_stack.c move.c small_stack.c
+SRC = main.c a_functions.c b_functions.c stack_len.c algorithme.c move.c sort.c free.c error.c
 OBJ = $(SRC:.c=.o)
 NAME = push_swap.a
 

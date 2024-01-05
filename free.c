@@ -1,49 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_len.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 17:37:42 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/04 17:38:36 by naadou           ###   ########.fr       */
+/*   Created: 2024/01/05 10:02:27 by naadou            #+#    #+#             */
+/*   Updated: 2024/01/05 11:46:48 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	**bubble_sort(int **stack, int len_b)
+#include "header.h"
+
+void	free_t_data(t_data x)
 {
 	int	i;
-	int	j;
-	int	tmp;
 
 	i = 0;
-	while (i < len_b)
+	while (i < x.stack_size)
 	{
-		j = i + 1;
-		while (j < len_b)
-		{
-			if (stack[i][0] > stack[j][0])
-			{
-				tmp = stack[i][0];
-				stack[i][0] = stack[j][0];
-				stack[j][0] = tmp;
-				tmp = stack[i][1];
-				stack[i][1] = stack[j][1];
-				stack[j][1] = tmp;
-			}
-			j++;
-		}
+		free(x.a[i]);
+		free(x.b[i]);
 		i++;
 	}
-	return (stack);
+	free(x.a);
+	free(x.b);
+	free(x.hm_a);
+	free(x.hm_b);
 }
 
-int	stack_len(int *stack)
+void	free_stack_clone(int **x, int len)
 {
 	int	i;
 
 	i = 0;
-	while (stack[i] == 1)
+	while (i < len)
+	{
+		free(x[i]);
 		i++;
-	return (i);
+	}
+	free(x);
 }

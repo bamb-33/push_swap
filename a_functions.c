@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 16:11:40 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/04 19:59:40 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/05 11:25:54 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	pa(int **a, int **b, int ac, t_data *var)
 {
 	int	len_a;
 	int	len_b;
+	int	*tmp;
 
 	len_a = stack_len(var->hm_a);
 	len_b = stack_len(var->hm_b);
@@ -39,7 +40,9 @@ void	pa(int **a, int **b, int ac, t_data *var)
 		return ;
 	else
 	{
+		tmp = a[len_a];
 		a[len_a] = b[len_b - 1];
+		b[len_b - 1] = tmp;
 		var->hm_b[len_b - 1] = 0;
 		var->hm_a[len_a] = 1;
 	}
