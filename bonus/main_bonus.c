@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/06 20:24:32 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/06 20:44:21 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,14 @@ int	main(int ac, char *av[])
 	if (error(var, integers) == 0)
 		error_exit();
 	instructions = get_next_line(0);
+	printf("%zu\n", ft_strlen(instructions));
+	for(int i = 0; instructions[i]; i++)
+		printf("%d\n", instructions[i]);
 	while (instructions)
 	{
 		ft_call(instructions, &var);
 		instructions = get_next_line(0);
 	}
-	print_stack(var);
 	if (is_sorted(&var) == 0)
 		write(2, "KO\n", 3);
 	else
