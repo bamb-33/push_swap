@@ -8,26 +8,28 @@ SRC = mandatory/main.c mandatory/functions_a.c mandatory/functions_b.c mandatory
 		mandatory/algorithme.c mandatory/move.c mandatory/sort.c mandatory/free.c mandatory/error.c \
 
 SRC_B = bonus/main_bonus.c bonus/ft_call_bonus.c bonus/functions_a_bonus.c \
-		 bonus/functions_b_bonus.c bonus/is_sorted.c
+		 bonus/functions_b_bonus.c bonus/is_sorted_bonus.c
 
 OBJ = $(SRC:.c=.o)
-OBJ_b = $(SRC_b:.c=.o)
+OBJ_B = $(SRC_B:.c=.o)
 NAME = push_swap.a
+NAME_BONUS = checker.a
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
-	cc mandatory/main.c libft/libft.a push_swap.a -o push_swap
-# && ./push_swap 2 1 3
+	# cc mandatory/main.c libft/libft.a push_swap.a -o push_swap
 
-bonus: 	$(OBJ_B)
+$(NAME_BONUS): $(OBJ_B) $(NAME)
+	ar -rcs $(NAME_BONUS) $(OBJ_B)
+	cc bonus/main_bonus.c libft/libft.a push_swap.a checker.a -o checker
+
+bonus: 	$(NAME_BONUS)
 
 $(OBJ_B): $(SRC_B)
-	@echo here
-	$(CC) $(CFLAGS) -c $^ 
-	ar rcs $(NAME) $(OBJ_B)
-	cc bonus/main_bonus.c libft/libft.a push_swap.a -o push_swap
+	$(CC) $(CFLAGS) -c $< -o $@
+	$(MAKE) -C libft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -38,7 +40,7 @@ clean:
 	$(MAKE) -C libft clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 	$(MAKE) -C libft fclean
 
 re: fclean all

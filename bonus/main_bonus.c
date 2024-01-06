@@ -6,12 +6,11 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 21:09:45 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/06 12:29:52 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
-#include "get-next-line/get_next_line.h"
 
 t_data	init(int ac, char **av)
 {
@@ -76,4 +75,5 @@ int	main(int ac, char *av[])
 		write(2, "KO\n", 3);
 	else
 		write(2, "KO\n", 3);
+	exit(0);
 }

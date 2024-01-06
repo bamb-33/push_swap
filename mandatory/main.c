@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 19:53:41 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/06 10:06:00 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ int	main(int ac, char *av[])
 	}
 	// print_stack(var);
 	free_t_data(var);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (0);
 }
