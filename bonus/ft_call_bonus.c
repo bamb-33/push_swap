@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_call_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: naadou <naadou@student.3.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:10:39 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 21:13:23 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/06 20:20:58 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 void	ft_call(char *str, t_data *x)
 {
-	if (str[0] == 's' && str[1] == 'a')
+	printf("%s", str);
+	printf("%d\n", str[1]);
+	printf("%d\n", ft_strncmp(str, "ra\n", 3));
+	if (!ft_strncmp(str, "sa\n", 3))
 		sa_bonus(x->a, x);
-	else if (str[0] == 's' && str[1] == 'b')
+	else if (!ft_strncmp(str, "sb\n", 3))
 		sb_bonus(x->b, x);
-	// else if (str[0] == 's' && str[1] == 's')
-	// 	ss_bonus(a, b, 1); //'crying emoji'
-	else if (str[0] == 'p' && str[1] == 'a')
+	else if (!ft_strncmp(str, "pa\n", 3))
 		pa_bonus(x->a, x->b, x->stack_size, x);
-	else if (str[0] == 'p' && str[1] == 'b')
+	else if (!ft_strncmp(str, "pb\n", 3))
 		pb_bonus(x->a, x->b, x->stack_size, x);
-	else if (str[0] == 'r' && str[1] == 'a')
+	else if (!ft_strncmp(str, "ra\n", 3))
 		ra_bonus(x->a, x);
-	else if (str[0] == 'r' && str[1] == 'b')
+	else if (!ft_strncmp(str, "rb\n", 3))
 		rb_bonus(x->b, x);
-	else if (str[0] == 'r' && str[1] == 'r')
+	else if (!ft_strncmp(str, "rr\n", 3))
 		rr_bonus(x);
-	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'a')
+	else if (!ft_strncmp(str, "rra\n", 4))
 		rra_bonus(x->a, x);
-	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'b')
+	else if (!ft_strncmp(str, "rrb\n", 4))
 		rrb_bonus(x->b, x);
-	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'r')
+	else if (!ft_strncmp(str, "rrr\n", 4))
 		rrr_bonus(x);
-	else
-		error_exit();
+	// else
+	// 	error_exit();
 }

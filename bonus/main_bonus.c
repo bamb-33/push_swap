@@ -6,13 +6,22 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/06 12:29:52 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/06 20:24:32 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-t_data	init(int ac, char **av)
+void print_stack(t_data var)
+{
+	for (int i = var.stack_size - 1; i >= 0; i--)
+	{
+		printf("%d|  %d || %d|  %d\n", var.a[i][0], var.hm_a[i], var.b[i][0], var.hm_b[i]);
+	}
+	printf("---------------\n\n");
+}
+
+t_data	init_bonus(int ac, char **av)
 {
 	int		i;
 	t_data	var;
@@ -47,7 +56,7 @@ int	main(int ac, char *av[])
 	char	*str;
 	char	**integers;
 	t_data	var;
-	char	**instructions;
+	char	*instructions;
 
 	i = 1;
 	str = 0;
@@ -61,19 +70,19 @@ int	main(int ac, char *av[])
 		i++;
 	}
 	integers = ft_split(str, ' ');
-	var = init(str_len(integers), integers);
+	var = init_bonus(str_len(integers), integers);
 	if (error(var, integers) == 0)
 		error_exit();
-	instructions = ft_split(get_next_line(0), '\n');
-	i = 0;
-	while (instructions[i])
+	instructions = get_next_line(0);
+	while (instructions)
 	{
-		ft_call(instructions[i], &var);
-		i++;
+		ft_call(instructions, &var);
+		instructions = get_next_line(0);
 	}
+	print_stack(var);
 	if (is_sorted(&var) == 0)
 		write(2, "KO\n", 3);
 	else
-		write(2, "KO\n", 3);
+		write(2, "OK\n", 3);
 	exit(0);
 }

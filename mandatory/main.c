@@ -6,29 +6,20 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/06 10:06:00 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/06 20:17:13 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void print_stack(t_data var)
-{
-	for (int i = var.stack_size - 1; i >= 0; i--)
-	{
-		printf("%d|  %d || %d|  %d\n", var.a[i][0], var.hm_a[i], var.b[i][0], var.hm_b[i]);
-	}
-	printf("---------------\n\n");
-	// printf("pb\n");
-    // printf("pb\n");
-    // printf("sa\n");
-    // printf("ra\n");
-    // printf("rra\n");
-    // printf("pa\n");
-    // printf("rra\n");
-    // printf("pa\n");
-    // printf("rra\n");
-}
+// void print_stack(t_data var)
+// {
+// 	for (int i = var.stack_size - 1; i >= 0; i--)
+// 	{
+// 		printf("%d|  %d || %d|  %d\n", var.a[i][0], var.hm_a[i], var.b[i][0], var.hm_b[i]);
+// 	}
+// 	printf("---------------\n\n");
+// }
 
 t_data	init(int ac, char **av)
 {

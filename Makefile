@@ -19,7 +19,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
-	# cc mandatory/main.c libft/libft.a push_swap.a -o push_swap
+	cc mandatory/main.c libft/libft.a push_swap.a -o push_swap
 
 $(NAME_BONUS): $(OBJ_B) $(NAME)
 	ar -rcs $(NAME_BONUS) $(OBJ_B)
@@ -27,9 +27,9 @@ $(NAME_BONUS): $(OBJ_B) $(NAME)
 
 bonus: 	$(NAME_BONUS)
 
-$(OBJ_B): $(SRC_B)
-	$(CC) $(CFLAGS) -c $< -o $@
-	$(MAKE) -C libft
+# $(OBJ_B): $(SRC_B)
+# 	$(CC) $(CFLAGS) -c $< -o $@
+# 	$(MAKE) -C libft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

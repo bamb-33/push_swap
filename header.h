@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/06 10:17:27 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/06 18:34:11 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	free_t_data(t_data x);
 void	free_stack_clone(int **x, int len);
 
 //bonus
-//ft_call
+// ft_call
 void	ft_call(char *str, t_data *x);
 
 //is_sorted
