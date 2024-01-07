@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/07 19:57:56 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/07 20:57:25 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,6 @@ int	main(int ac, char *av[])
 		return (0);
 	integers = ft_get_integers(ac, av);
 	var = init(str_len(integers), integers);
-	print_stack(var);
-	rrb(var.b, &var, 1);
-	print_stack(var);
-	exit(0);
 	if (error(var, integers) == 0)
 		error_exit();
 	if (stack_len(var.hm_a) <= 3)
