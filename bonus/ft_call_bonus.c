@@ -14,7 +14,6 @@
 
 void	ft_call(char *str, t_data *x)
 {
-	printf("%d\n", ft_strncmp(str, "ra\n", 3));
 	if (!ft_strncmp(str, "sa\n", 3))
 		sa_bonus(x->a, x);
 	else if (!ft_strncmp(str, "sb\n", 3))

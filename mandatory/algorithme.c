@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 08:55:00 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 18:49:59 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/07 19:56:10 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	small_stack(t_data *x)
 		}
 		else if (i == stack_len(x->hm_a) - 1)
 		{
-			issorted(x);
+			sort(x);
 			while (stack_len(x->hm_b))
 				pa(x->a, x->b, x->stack_size, x);
 			break ;
@@ -75,6 +75,8 @@ int	**stack_clone(t_data *x)
 	i = 0;
 	len_b = stack_len(x->hm_b);
 	s = (int **) malloc (sizeof(int *) * len_b);
+	if (!s)
+		exit(0);//not sure if this is the right way to do it
 	while (i < len_b)
 	{
 		s[i] = (int *) malloc (sizeof(int ) * 2);
@@ -119,9 +121,9 @@ void	algorithme(t_data *x)
 
 	if (stack_len(x->hm_a) <= 3)
 	{
-		issorted(x);
+		sort(x);
 		small_stack(x);
-		issorted(x);
+		sort(x);
 		return ;
 	}
 	i = 0;

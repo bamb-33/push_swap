@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/06 18:34:11 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/07 18:22:55 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	small_stack(t_data *x);
 int		**bubble_sort(int **stack, int len_b);
 void	a_sort(int a, t_data *x);
 void	b_sort(int b, t_data *x);
-int		sort(t_data *x);
-void	issorted(t_data *x);
+int		is_a_sorted(t_data *x);
+void	sort(t_data *x);
 
 //stack_len
 int		stack_len(int *stack);
@@ -67,6 +67,7 @@ int		str_len(char **stack);
 //free
 void	free_t_data(t_data x);
 void	free_stack_clone(int **x, int len);
+void	free_strings(char *s1, char *s2);
 
 //bonus
 // ft_call

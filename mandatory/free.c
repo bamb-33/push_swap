@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:27 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 18:18:18 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/07 19:24:25 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ void	free_stack_clone(int **x, int len)
 		i++;
 	}
 	free(x);
+}
+
+void	free_strings(char *s1, char *s2)
+{
+	free(s1);
+	free(s2);
 }

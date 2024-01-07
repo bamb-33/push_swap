@@ -6,22 +6,13 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/06 20:44:21 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/07 18:57:11 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void print_stack(t_data var)
-{
-	for (int i = var.stack_size - 1; i >= 0; i--)
-	{
-		printf("%d|  %d || %d|  %d\n", var.a[i][0], var.hm_a[i], var.b[i][0], var.hm_b[i]);
-	}
-	printf("---------------\n\n");
-}
-
-t_data	init_bonus(int ac, char **av)
+t_data	init(int ac, char **av)
 {
 	int		i;
 	t_data	var;
@@ -50,33 +41,48 @@ t_data	init_bonus(int ac, char **av)
 	return (var);
 }
 
-int	main(int ac, char *av[])
+char	**ft_get_integers(int ac, char **av)
 {
 	int		i;
 	char	*str;
+	char	*tmp;
+	char	**integers;
+
+	i = 1;
+	tmp = NULL;
+	str = NULL;
+	while (i < ac)
+	{
+		if (str)
+			free(str);
+		if (av[i][0] == 0)
+			error_exit();
+		str = ft_strjoin(tmp, av[i], ' ');
+		if (!str)
+			exit(0);//not sure if this is the right way to do it
+		if (tmp)
+			free(tmp);
+		tmp = ft_strdup(str);
+		i++;
+	}
+	integers = ft_split(str, ' ');
+	free_strings(str, tmp);
+	return (integers);
+}
+
+int	main(int ac, char *av[])
+{
 	char	**integers;
 	t_data	var;
 	char	*instructions;
 
-	i = 1;
-	str = 0;
 	if (ac == 1)
 		return (0);
-	while (i < ac)
-	{
-		if (av[i][0] == 0)
-			error_exit();
-		str = ft_strjoin(str, av[i], ' ');
-		i++;
-	}
-	integers = ft_split(str, ' ');
-	var = init_bonus(str_len(integers), integers);
+	integers = ft_get_integers(ac, av);
+	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
 		error_exit();
 	instructions = get_next_line(0);
-	printf("%zu\n", ft_strlen(instructions));
-	for(int i = 0; instructions[i]; i++)
-		printf("%d\n", instructions[i]);
 	while (instructions)
 	{
 		ft_call(instructions, &var);

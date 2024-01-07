@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:48:46 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 18:52:35 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/07 18:17:47 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_duplicates(int i, t_data var)
 	return (1);
 }
 
-int	error(t_data var, char **av)
+int	check_if_integer(t_data var, char **av)
 {
 	int	i;
 	int	j;
@@ -55,7 +55,16 @@ int	error(t_data var, char **av)
 		}
 		i++;
 	}
+	return (1);
+}
+
+int	error(t_data var, char **av)
+{
+	int	i;
+
 	i = 0;
+	if (check_if_integer(var, av) == 0)
+		return (0);
 	while (i < var.stack_size)
 	{
 		if (ft_atoi(av[i]) > 2147483647 || ft_atoi(av[i]) < -2147483648)

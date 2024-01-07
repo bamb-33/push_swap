@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:33:28 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/05 18:49:23 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/07 19:43:18 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	a_sort(int a, t_data *x)
 	}
 }
 
-int	sort(t_data *x)
+int	is_a_sorted(t_data *x)
 {
 	int	i;
 	int	a;
@@ -120,7 +120,7 @@ int	sort(t_data *x)
 	return (1);
 }
 
-void	issorted(t_data *x)
+void	sort(t_data *x)
 {
 	int	i;
 	int	b;
@@ -136,6 +136,6 @@ void	issorted(t_data *x)
 		i++;
 	}
 	b_sort(b, x);
-	while (sort(x) == 0)
+	while (is_a_sorted(x) == 0)
 		sa(x->a, x);
 }
