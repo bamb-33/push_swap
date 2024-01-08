@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 16:11:40 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/07 19:37:22 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 13:38:57 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 void	sa(int **a, t_data *var)
 {
-	int	t1;
-	int	t2;
+	int	*tmp;
 	int	len;
 
 	len = stack_len(var->hm_a);
-	t1 = a[len - 1][0];
-	t2 = a[len - 1][1];
-	a[len - 1][0] = a[len - 2][0];
-	a[len - 1][1] = a[len - 2][1];
-	a[len - 2][0] = t1;
-	a[len - 2][1] = t2;
+	tmp = a[len - 1];
+	a[len - 1] = a[len - 2];
+	a[len - 2] = tmp;
 	write(1, "sa\n", 3);
 }
 
@@ -60,10 +56,9 @@ void	ra(int **a, t_data *var, int flag)
 	len = stack_len(var->hm_a);
 	tmp1 = a[i];
 	a[i] = a[len - 1];
-	while (len - 1 > 0)
+	while (i < len - 1)
 	{
 		i++;
-		len--;
 		if (i % 2 == 1)
 		{
 			tmp2 = a[i];
@@ -90,19 +85,18 @@ void	rra(int **a, t_data *var, int flag)
 	len = stack_len(var->hm_a);
 	tmp1 = a[len - 1];
 	a[len - 1] = a[0];
-	while (len - 1 > 0)
+	while (i < len - 1)
 	{
 		i++;
-		len--;
 		if (i % 2 == 1)
 		{
-			tmp2 = a[len - 1];
-			a[len - 1] = tmp1;
+			tmp2 = a[len - i - 1];
+			a[len - i - 1] = tmp1;
 		}
 		else
 		{
-			tmp1 = a[len - 1];
-			a[len - 1] = tmp2;
+			tmp1 = a[len - i - 1];
+			a[len - i - 1] = tmp2;
 		}
 	}
 	if (flag == 1)

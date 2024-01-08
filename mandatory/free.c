@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:27 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/07 19:24:25 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 13:25:54 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,16 @@ void	free_strings(char *s1, char *s2)
 {
 	free(s1);
 	free(s2);
+}
+
+void	free_int(int *n)
+{
+	free(n);
+	exit(1);
+}
+
+void	free_two_d_int(int **n)
+{
+	free(n);
+	exit(1);
 }

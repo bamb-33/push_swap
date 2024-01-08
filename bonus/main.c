@@ -1,38 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/07 18:57:11 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 14:06:40 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+void	allocation(t_data *var, int ac)
+{
+	int		i;
+
+	i = 0;
+	var->a = (int **) malloc (sizeof(int *) * ac);
+	if (!var->a)
+		free_two_d_int(var->a);
+	var->b = (int **) malloc (sizeof(int *) * ac);
+	if (!var->b)
+		free_two_d_int(var->b);
+	while (i < ac)
+	{
+		var->a[i] = (int *) malloc (sizeof(int) * 3);
+		if (!var->a[i])
+			free_int(var->a[i]);
+		var->b[i] = (int *) malloc (sizeof(int) * 3);
+		if (!var->b[i])
+			free_int(var->b[i]);
+		i++;
+	}
+	var->hm_a = (int *) malloc (sizeof(int) * ac);
+	if (!var->hm_a)
+		free_int(var->hm_a);
+	var->hm_b = (int *) malloc (sizeof(int) * ac);
+	if (!var->hm_b)
+		free_int(var->hm_b);
+}
 
 t_data	init(int ac, char **av)
 {
 	int		i;
 	t_data	var;
 
-	i = 0;
-	var.a = (int **) malloc (sizeof(int *) * ac);
-	var.b = (int **) malloc (sizeof(int *) * ac);
+	allocation(&var, ac);
 	var.stack_size = ac;
-	while (i < ac)
-	{
-		var.a[i] = (int *) malloc (sizeof(int) * 3);
-		var.b[i] = (int *) malloc (sizeof(int) * 3);
-		i++;
-	}
-	var.hm_a = (int *) malloc (sizeof(int) * ac);
-	var.hm_b = (int *) malloc (sizeof(int) * ac);
 	i = 0;
 	while (ac > 0)
 	{
-		var.a[ac - 1][0] = ft_atoi(av[i]);
+		var.a[ac - 1][0] = atoi_extra(av[i]);
 		var.hm_a[i] = 1;
 		var.hm_b[i] = 0;
 		ac--;
@@ -59,7 +78,7 @@ char	**ft_get_integers(int ac, char **av)
 			error_exit();
 		str = ft_strjoin(tmp, av[i], ' ');
 		if (!str)
-			exit(0);//not sure if this is the right way to do it
+			exit(1);
 		if (tmp)
 			free(tmp);
 		tmp = ft_strdup(str);

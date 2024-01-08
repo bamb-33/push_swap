@@ -7,8 +7,8 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = mandatory/main.c mandatory/functions_a.c mandatory/functions_b.c mandatory/stack_len.c \
 		mandatory/algorithme.c mandatory/move.c mandatory/sort.c mandatory/free.c mandatory/error.c \
 
-SRC_B = bonus/main_bonus.c bonus/ft_call_bonus.c bonus/functions_a_bonus.c \
-		 bonus/functions_b_bonus.c bonus/is_sorted_bonus.c
+SRC_B = bonus/main.c bonus/ft_call_bonus.c bonus/functions_a_bonus.c \
+		 bonus/functions_b_bonus.c bonus/is_sorted_bonus.c bonus/ss.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_B = $(SRC_B:.c=.o)
@@ -23,13 +23,9 @@ $(NAME): $(OBJ)
 
 $(NAME_BONUS): $(OBJ_B) $(NAME)
 	ar -rcs $(NAME_BONUS) $(OBJ_B)
-	cc bonus/main_bonus.c libft/libft.a push_swap.a checker.a -o checker
+	cc bonus/main.c libft/libft.a push_swap.a checker.a -o checker
 
 bonus: 	$(NAME_BONUS)
-
-# $(OBJ_B): $(SRC_B)
-# 	$(CC) $(CFLAGS) -c $< -o $@
-# 	$(MAKE) -C libft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

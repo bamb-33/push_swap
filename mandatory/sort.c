@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:33:28 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/07 21:01:34 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 15:23:24 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	**bubble_sort(int **stack, int len_b)
 {
 	int	i;
 	int	j;
-	int	tmp;
+	int	*tmp;
 
 	i = 0;
 	while (i < len_b)
@@ -26,12 +26,9 @@ int	**bubble_sort(int **stack, int len_b)
 		{
 			if (stack[i][0] > stack[j][0])
 			{
-				tmp = stack[i][0];
-				stack[i][0] = stack[j][0];
-				stack[j][0] = tmp;
-				tmp = stack[i][1];
-				stack[i][1] = stack[j][1];
-				stack[j][1] = tmp;
+				tmp = stack[i];
+				stack[i] = stack[j];
+				stack[j] = tmp;
 			}
 			j++;
 		}

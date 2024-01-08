@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:34:56 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/07 19:35:44 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 13:37:39 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ void	rb_bonus(int **b, t_data *var)
 	len = stack_len(var->hm_b);
 	tmp1 = b[i];
 	b[i] = b[len - 1];
-	while (len - 1 > 0)
+	while (i < len - 1)
 	{
 		i++;
-		len--;
 		if (i % 2 == 1)
 		{
 			tmp2 = b[i];
@@ -82,19 +81,18 @@ void	rrb_bonus(int **b, t_data *var)
 	len = stack_len(var->hm_b);
 	tmp1 = b[len - 1];
 	b[len - 1] = b[0];
-	while (len - 1 > 0)
+	while (i < len - 1)
 	{
 		i++;
-		len--;
 		if (i % 2 == 1)
 		{
-			tmp2 = b[len - 1];
-			b[len - 1] = tmp1;
+			tmp2 = b[len - i - 1];
+			b[len - i - 1] = tmp1;
 		}
 		else
 		{
-			tmp1 = b[len - 1];
-			b[len - 1] = tmp2;
+			tmp1 = b[len - i - 1];
+			b[len - i - 1] = tmp2;
 		}
 	}
 }

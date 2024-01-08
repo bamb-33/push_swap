@@ -18,6 +18,8 @@ void	ft_call(char *str, t_data *x)
 		sa_bonus(x->a, x);
 	else if (!ft_strncmp(str, "sb\n", 3))
 		sb_bonus(x->b, x);
+	else if (!ft_strncmp(str, "ss\n", 3))
+		ss_bonus(x);
 	else if (!ft_strncmp(str, "pa\n", 3))
 		pa_bonus(x->a, x->b, x->stack_size, x);
 	else if (!ft_strncmp(str, "pb\n", 3))
