@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/08 17:53:11 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 18:17:04 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ int				str_len(char **stack);
 void			free_t_data(t_data x);
 void			free_stack_clone(int **x, int len);
 void			free_strings(char *s1, char *s2);
-void			free_int(int *n);
-void			free_two_d_int(int **n);
+void			free_previous(t_data x, int flag);
 
 //bonus
 // ft_call

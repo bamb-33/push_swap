@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 08:55:00 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/08 17:57:43 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 18:14:52 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ int	**stack_clone(t_data *x)
 	len_b = stack_len(x->hm_b);
 	s = (int **) malloc (sizeof(int *) * len_b);
 	if (!s)
+	{
+		free_t_data(*x);
 		exit(1);
+	}
 	while (i < len_b)
 	{
 		s[i] = (int *) malloc (sizeof(int ) * 2);

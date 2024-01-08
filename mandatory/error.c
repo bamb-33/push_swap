@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:48:46 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/08 14:19:56 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 18:40:45 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,18 @@ int	check_if_integer(t_data var, char **ns)
 		j = 0;
 		while (ns[i][j])
 		{
-			if (sign > 1)
-				return (0);
 			if (ns[i][j] == 45 || ns[i][j] == 43)
 				sign++;
 			else if (ns[i][j] < 48 || ns[i][j] > 57)
+				return (0);
+			if (sign > 1)
 				return (0);
 			j++;
 		}
 		i++;
 	}
+	if (sign == j)
+		return (0);
 	return (1);
 }
 
