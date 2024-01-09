@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/08 18:17:04 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/09 15:40:25 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void			rrr(t_data *var);
 int				error(t_data var, char **av);
 void			error_exit(void);
 long long int	atoi_extra(const char *str);
+
+//three_biggest_nums
+void			three_biggest_nums(t_data *x);
 
 //big_stack
 void			algorithme(t_data *x);
@@ -89,7 +92,5 @@ void			rra_bonus(int **a, t_data *var);
 void			rrb_bonus(int **b, t_data *var);
 void			rr_bonus(t_data *var);
 void			rrr_bonus(t_data *var);
-
-// void	merge_sort(int **arr, int l, int h);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/08 18:24:16 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/09 15:39:57 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ char	**ft_get_integers(int ac, char **av)
 	{
 		if (str)
 			free(str);
-		if (av[i][0] == 0)
-			error_exit();
 		str = ft_strjoin(tmp, av[i], ' ');
-		if (!str)
-			exit(1);
 		if (tmp)
 			free(tmp);
+		if (!str)
+			exit(1);
+		if (av[i][0] == 0)
+			error_exit();
 		tmp = ft_strdup(str);
 		i++;
 	}
@@ -99,7 +99,10 @@ int	main(int ac, char *av[])
 	integers = ft_get_integers(ac, av);
 	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
+	{
+		free_t_data(var);
 		error_exit();
+	}
 	if (stack_len(var.hm_a) <= 3)
 		sort(&var);
 	else

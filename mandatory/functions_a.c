@@ -6,11 +6,13 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 16:11:40 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/08 13:38:57 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/08 21:09:41 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+static int z = 0;
 
 void	sa(int **a, t_data *var)
 {
@@ -22,6 +24,7 @@ void	sa(int **a, t_data *var)
 	a[len - 1] = a[len - 2];
 	a[len - 2] = tmp;
 	write(1, "sa\n", 3);
+	z++;
 }
 
 void	pa(int **a, int **b, int ac, t_data *var)
@@ -43,6 +46,7 @@ void	pa(int **a, int **b, int ac, t_data *var)
 		var->hm_a[len_a] = 1;
 	}
 	write(1, "pa\n", 3);
+	z++;
 }
 
 void	ra(int **a, t_data *var, int flag)
@@ -71,7 +75,10 @@ void	ra(int **a, t_data *var, int flag)
 		}
 	}
 	if (flag == 1)
+	{
 		write(1, "ra\n", 3);
+		z++;
+	}
 }
 
 void	rra(int **a, t_data *var, int flag)
@@ -100,7 +107,10 @@ void	rra(int **a, t_data *var, int flag)
 		}
 	}
 	if (flag == 1)
+	{
 		write(1, "rra\n", 4);
+		z++;
+	}
 }
 
 void	rr(t_data *var)
@@ -108,4 +118,10 @@ void	rr(t_data *var)
 	ra(var->a, var, 0);
 	rb(var->b, var, 0);
 	write(1, "rr\n", 3);
+	z++;
+}
+
+void bzb_bzb()
+{
+	printf("%d\n", z);
 }
