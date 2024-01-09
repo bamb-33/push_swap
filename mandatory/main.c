@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/09 15:39:57 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/09 18:34:59 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_data	init(int ac, char **av)
 	i = 0;
 	while (ac > 0)
 	{
-		var.a[ac - 1][0] = atoi_extra(av[i]);
+		var.a[ac - 1][0] = ft_atoi(av[i]);
 		var.hm_a[i] = 1;
 		var.hm_b[i] = 0;
 		ac--;

@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:48:46 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/09 14:41:36 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/09 19:02:25 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,25 @@ int	check_if_integer(t_data var, char **ns)
 
 int	error(t_data var, char **ns)
 {
-	int	i;
+	int		i;
+	int		sign;
+	size_t	num;
 
 	i = 0;
+	sign = 1;
 	if (check_if_integer(var, ns) == 0)
 		return (0);
 	while (i < var.stack_size)
 	{
-		if (atoi_extra(ns[i]) > 2147483647 || atoi_extra(ns[i]) < -2147483648)
+		if (ns[i][0] == '-')
+			sign = 0;
+		num = atoi_extra(ns[i]);
+		if (sign == 0 && num > 2147483648)
+			return (0);
+		if (sign == 1 && num > 2147483647)
 			return (0);
 		if (check_duplicates(i, var) == 0)
 			return (0);
 		i++;
 	}
-	return (1);
 }
