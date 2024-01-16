@@ -6,20 +6,18 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 08:55:00 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 09:41:24 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:28:24 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-int	**stack_clone(t_data *var, int **x, int *s_len)
+int	**stack_clone(t_data *var, int **x, int len)
 {
 	int	i;
-	int	len;
 	int	**s;
 
 	i = 0;
-	len = stack_len(s_len);
 	s = (int **) malloc (sizeof(int *) * len);
 	if (!s)
 	{
@@ -29,6 +27,12 @@ int	**stack_clone(t_data *var, int **x, int *s_len)
 	while (i < len)
 	{
 		s[i] = (int *) malloc (sizeof(int ) * 2);
+		if (!s[i])
+		{
+			free_stack_clone(s, i);
+			free_t_data(var);
+			exit(1);
+		}
 		s[i][0] = x[i][0];
 		s[i][1] = i;
 		i++;
@@ -73,7 +77,7 @@ void	small_stack(t_data *x)
 	a = 0;
 	while (stack_len(x->hm_b))
 	{
-		s = stack_clone(x, x->a, x->hm_a);
+		s = stack_clone(x, x->a, stack_len(x->hm_a));
 		if (x->b[stack_len(x->hm_b) - 1][0] < s[i][0])
 		{
 			final_move(s[i][1], x);
@@ -97,7 +101,7 @@ int	finder(int index_a, t_data *x)
 	int	**s;
 
 	len_b = stack_len(x->hm_b);
-	s = stack_clone(x, x->b, x->hm_b);
+	s = stack_clone(x, x->b, stack_len(x->hm_b));
 	while (len_b > 0)
 	{
 		if (x->a[index_a][0] > s[len_b - 1][0])

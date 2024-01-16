@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 09:42:46 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:34:47 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	allocation(t_data *var, int ac)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	var->a = (int **) malloc (sizeof(int *) * ac);
@@ -60,6 +60,20 @@ t_data	init(int ac, char **av)
 	return (var);
 }
 
+void	empty_string_check(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != 32)
+			return ;
+		i++;
+	}
+	error_exit();
+}
+
 char	**ft_get_integers(int ac, char **av)
 {
 	int		i;
@@ -79,8 +93,7 @@ char	**ft_get_integers(int ac, char **av)
 			free(tmp);
 		if (!str)
 			exit(1);
-		if (av[i][0] == 0)
-			error_exit();
+		empty_string_check(av[i]);
 		tmp = ft_strdup(str);
 		i++;
 	}
@@ -97,6 +110,8 @@ int	main(int ac, char *av[])
 	if (ac == 1)
 		return (0);
 	integers = ft_get_integers(ac, av);
+	if (!integers)
+		exit(1);
 	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
 	{

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/09 17:09:03 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 12:55:02 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ t_data	init(int ac, char **av)
 	return (var);
 }
 
+int	empty_string_check(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] == 32)
+	{
+		if (str[i] != 32)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 char	**ft_get_integers(int ac, char **av)
 {
 	int		i;
@@ -79,7 +93,7 @@ char	**ft_get_integers(int ac, char **av)
 			free(tmp);
 		if (!str)
 			exit(1);
-		if (av[i][0] == 0)
+		if (empty_string_check(av[i]) == 0)
 			error_exit();
 		tmp = ft_strdup(str);
 		i++;

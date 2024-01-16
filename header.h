@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/15 19:49:18 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:34:18 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stddef.h>
 # include "libft/libft.h"
 
-
 typedef struct s_data
 {
 	int	**a;
@@ -28,8 +27,6 @@ typedef struct s_data
 	int	*hm_b;
 	int	stack_size;
 }	t_data;
-
-void print_stack(t_data var);
 
 void	sa(int **a, t_data *var);
 void	sb(int **b, t_data *var);
@@ -44,19 +41,14 @@ void	rrr(t_data *var);
 
 int		error(t_data var, char **av);
 void	error_exit(void);
-size_t	atoi_extra(const char *str);
 
 int		is_sorted(t_data *x);
 
 void	algorithme(t_data *x);
-void	algo_b(t_data *x);
 
 int		move(int a, int b, int flag, t_data *x);
 
 int		**bubble_sort(int **stack, int len_b);
-void	a_sort(int a, t_data *x);
-void	b_sort(int b, t_data *x);
-int		is_a_sorted(t_data *x);
 void	sort(t_data *x);
 
 int		stack_len(int *stack);
