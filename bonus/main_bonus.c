@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/09 09:17:43 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/09 17:09:03 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,23 @@ void	allocation(t_data *var, int ac)
 		exit(1);
 	var->b = (int **) malloc (sizeof(int *) * ac);
 	if (!var->b)
-		free_previous(*var, 1);
+		free_previous(var, 1);
 	while (i < ac)
 	{
 		var->a[i] = (int *) malloc (sizeof(int) * 3);
 		if (!var->a[i])
-			free_previous(*var, 2);
+			free_previous(var, 2);
 		var->b[i] = (int *) malloc (sizeof(int) * 3);
 		if (!var->b[i])
-			free_previous(*var, 3);
+			free_previous(var, 3);
 		i++;
 	}
 	var->hm_a = (int *) malloc (sizeof(int) * ac);
 	if (!var->hm_a)
-		free_previous(*var, 4);
+		free_previous(var, 4);
 	var->hm_b = (int *) malloc (sizeof(int) * ac);
 	if (!var->hm_b)
-		free_previous(*var, 5);
+		free_previous(var, 5);
 }
 
 t_data	init(int ac, char **av)
@@ -100,7 +100,10 @@ int	main(int ac, char *av[])
 	integers = ft_get_integers(ac, av);
 	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
+	{
+		free_t_data(&var);
 		error_exit();
+	}
 	instructions = get_next_line(0);
 	while (instructions)
 	{
@@ -111,5 +114,6 @@ int	main(int ac, char *av[])
 		write(2, "KO\n", 3);
 	else
 		write(2, "OK\n", 3);
-	exit(0);
+	free_t_data(&var);
+	return (0);
 }

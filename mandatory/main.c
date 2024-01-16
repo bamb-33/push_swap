@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/09 18:34:59 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 09:42:46 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,23 @@ void	allocation(t_data *var, int ac)
 		exit(1);
 	var->b = (int **) malloc (sizeof(int *) * ac);
 	if (!var->b)
-		free_previous(*var, 1);
+		free_previous(var, 1);
 	while (i < ac)
 	{
 		var->a[i] = (int *) malloc (sizeof(int) * 3);
 		if (!var->a[i])
-			free_previous(*var, 2);
+			free_previous(var, 2);
 		var->b[i] = (int *) malloc (sizeof(int) * 3);
 		if (!var->b[i])
-			free_previous(*var, 3);
+			free_previous(var, 3);
 		i++;
 	}
 	var->hm_a = (int *) malloc (sizeof(int) * ac);
 	if (!var->hm_a)
-		free_previous(*var, 4);
+		free_previous(var, 4);
 	var->hm_b = (int *) malloc (sizeof(int) * ac);
 	if (!var->hm_b)
-		free_previous(*var, 5);
+		free_previous(var, 5);
 }
 
 t_data	init(int ac, char **av)
@@ -100,17 +100,17 @@ int	main(int ac, char *av[])
 	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
 	{
-		free_t_data(var);
+		free_t_data(&var);
 		error_exit();
 	}
-	if (stack_len(var.hm_a) <= 3)
+	if (is_sorted(&var) == 0 && stack_len(var.hm_a) <= 3)
 		sort(&var);
-	else
+	else if (is_sorted(&var) == 0)
 	{
 		pb(var.a, var.b, var.stack_size, &var);
 		pb(var.a, var.b, var.stack_size, &var);
 		algorithme(&var);
 	}
-	free_t_data(var);
+	free_t_data(&var);
 	return (0);
 }

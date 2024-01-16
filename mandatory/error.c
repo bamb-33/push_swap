@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:48:46 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/09 19:02:25 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/15 13:47:41 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,23 @@ void	error_exit(void)
 	exit(1);
 }
 
-long long int	atoi_extra(const char *str)
+size_t	atoi_extra(const char *str)
 {
-	int				i;
-	int				sign;
-	long long int	result;
+	int		i;
+	size_t	result;
 
 	i = 0;
-	sign = 1;
 	result = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
 		i++;
-	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = (result * 10) + (str[i] - 48);
 		i++;
 	}
-	return (result * sign);
+	return (result);
 }
 
 int	check_duplicates(int i, t_data var)
@@ -108,4 +102,5 @@ int	error(t_data var, char **ns)
 			return (0);
 		i++;
 	}
+	return (1);
 }

@@ -6,11 +6,36 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 08:55:00 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/09 15:38:25 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 09:41:24 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+int	**stack_clone(t_data *var, int **x, int *s_len)
+{
+	int	i;
+	int	len;
+	int	**s;
+
+	i = 0;
+	len = stack_len(s_len);
+	s = (int **) malloc (sizeof(int *) * len);
+	if (!s)
+	{
+		free_t_data(var);
+		exit(1);
+	}
+	while (i < len)
+	{
+		s[i] = (int *) malloc (sizeof(int ) * 2);
+		s[i][0] = x[i][0];
+		s[i][1] = i;
+		i++;
+	}
+	s = bubble_sort(s, len);
+	return (s);
+}
 
 void	final_move(int a, t_data *x)
 {
@@ -42,53 +67,27 @@ void	small_stack(t_data *x)
 {
 	int	i;
 	int	a;
+	int	**s;
 
 	i = 0;
 	a = 0;
 	while (stack_len(x->hm_b))
 	{
-		if (x->b[stack_len(x->hm_b) - 1][0] > x->a[i][0])
+		s = stack_clone(x, x->a, x->hm_a);
+		if (x->b[stack_len(x->hm_b) - 1][0] < s[i][0])
 		{
-			if (i - 1 < 0)
-				i = stack_len(x->hm_a);
-			final_move(i - 1, x);
+			final_move(s[i][1], x);
 			i = 0;
 			continue ;
 		}
 		else if (i == stack_len(x->hm_a) - 1)
 		{
-			sort(x);
-			while (stack_len(x->hm_b))
-				pa(x->a, x->b, x->stack_size, x);
-			break ;
+			pa(x->a, x->b, x->stack_size, x);
+			i = 0;
+			continue ;
 		}
 		i++;
 	}
-}
-
-int	**stack_clone(t_data *x)
-{
-	int	i;
-	int	len_b;
-	int	**s;
-
-	i = 0;
-	len_b = stack_len(x->hm_b);
-	s = (int **) malloc (sizeof(int *) * len_b);
-	if (!s)
-	{
-		free_t_data(*x);
-		exit(1);
-	}
-	while (i < len_b)
-	{
-		s[i] = (int *) malloc (sizeof(int ) * 2);
-		s[i][0] = x->b[i][0];
-		s[i][1] = i;
-		i++;
-	}
-	s = bubble_sort(s, len_b);
-	return (s);
 }
 
 int	finder(int index_a, t_data *x)
@@ -98,7 +97,7 @@ int	finder(int index_a, t_data *x)
 	int	**s;
 
 	len_b = stack_len(x->hm_b);
-	s = stack_clone(x);
+	s = stack_clone(x, x->b, x->hm_b);
 	while (len_b > 0)
 	{
 		if (x->a[index_a][0] > s[len_b - 1][0])

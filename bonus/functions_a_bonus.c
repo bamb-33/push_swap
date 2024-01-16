@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 16:11:40 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/08 13:39:08 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/09 15:55:44 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ void	rra_bonus(int **a, t_data *var)
 
 void	rr_bonus(t_data *var)
 {
-	ra(var->a, var, 0);
-	rb(var->b, var, 0);
+	ra_bonus(var->a, var);
+	rb_bonus(var->b, var);
 }

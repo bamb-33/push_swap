@@ -12,6 +12,12 @@
 
 #include "../header.h"
 
+void	error_cmd(t_data *x)
+{
+	free_t_data(x);
+	error_exit();
+}
+
 void	ft_call(char *str, t_data *x)
 {
 	if (!ft_strncmp(str, "sa\n", 3))
@@ -37,5 +43,5 @@ void	ft_call(char *str, t_data *x)
 	else if (!ft_strncmp(str, "rrr\n", 4))
 		rrr_bonus(x);
 	else
-		error_exit();
+		error_cmd(x);
 }
