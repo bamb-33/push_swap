@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:27 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/09 16:46:01 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 18:17:52 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ void	free_t_data(t_data *x)
 	free(x->b);
 	free(x->hm_a);
 	free(x->hm_b);
+}
+
+void	free_integers(char **strs, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
 }
 
 void	free_stack_clone(int **x, int len)

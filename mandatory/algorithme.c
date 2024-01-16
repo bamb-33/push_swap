@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 08:55:00 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 14:59:43 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 19:33:51 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,14 @@ void	small_stack(t_data *x)
 		{
 			final_move(s[i][1], x);
 			i = 0;
+			free_stack_clone(s, stack_len(x->hm_a) - 1);
 			continue ;
 		}
 		else if (i == stack_len(x->hm_a) - 1)
 		{
 			pa(x->a, x->b, x->stack_size, x);
 			i = 0;
+			free_stack_clone(s, stack_len(x->hm_a) - 1);
 			continue ;
 		}
 		i++;

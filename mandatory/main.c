@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:09:34 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 14:59:59 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 19:35:33 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,11 @@ int	main(int ac, char *av[])
 	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
 	{
+		free_integers(integers, var.stack_size);
 		free_t_data(&var);
 		error_exit();
 	}
+	free_integers(integers, var.stack_size);
 	if (is_sorted(&var) == 0 && stack_len(var.hm_a) <= 3)
 		sort(&var);
 	else if (is_sorted(&var) == 0)
