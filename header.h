@@ -6,14 +6,13 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 13:34:18 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 15:00:32 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
@@ -60,6 +59,7 @@ void	free_strings(char *s1, char *s2);
 void	free_previous(t_data *x, int flag);
 
 void	ft_call(char *str, t_data *x);
+void	read_instructions(t_data *var);
 
 void	sa_bonus(int **a, t_data *var);
 void	sb_bonus(int **b, t_data *var);

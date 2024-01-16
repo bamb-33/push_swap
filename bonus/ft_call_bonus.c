@@ -45,3 +45,16 @@ void	ft_call(char *str, t_data *x)
 	else
 		error_cmd(x);
 }
+
+void	read_instructions(t_data *var)
+{
+	char	*instructions;
+
+	instructions = get_next_line(0);
+	while (instructions)
+	{
+		ft_call(instructions, var);
+		free (instructions);
+		instructions = get_next_line(0);
+	}
+}

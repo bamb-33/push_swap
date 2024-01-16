@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:48:46 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/15 13:47:41 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 15:12:28 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,25 @@ int	check_duplicates(int i, t_data var)
 
 int	check_if_integer(t_data var, char **ns)
 {
-	int	i;
-	int	j;
-	int	sign;
+	int		i;
+	size_t	j;
+	size_t	sign;
 
 	i = 0;
 	while (i < var.stack_size)
 	{
 		sign = 0;
 		j = 0;
-		while (ns[i][j])
-		{
-			if (ns[i][j] == 45 || ns[i][j] == 43)
-				sign++;
-			else if (ns[i][j] < 48 || ns[i][j] > 57)
-				return (0);
+		while (ns[i][j] == 45 || ns[i][j] == 43)
 			j++;
-		}
-		if (sign > 1 || ns[i][j - 1] == 45 || ns[i][j - 1] == 43)
+		if (j > 1 || (ft_strlen(ns[i]) == 1 && j == 1))
+			return (0);
+		while (ns[i][j] >= 48 && ns[i][j] <= 57)
+			j++;
+		if (j != ft_strlen(ns[i]))
 			return (0);
 		i++;
 	}
-	if (sign == j)
-		return (0);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 12:55:02 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/16 14:32:04 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_data	init(int ac, char **av)
 	i = 0;
 	while (ac > 0)
 	{
-		var.a[ac - 1][0] = atoi_extra(av[i]);
+		var.a[ac - 1][0] = ft_atoi(av[i]);
 		var.hm_a[i] = 1;
 		var.hm_b[i] = 0;
 		ac--;
@@ -60,18 +60,18 @@ t_data	init(int ac, char **av)
 	return (var);
 }
 
-int	empty_string_check(char *str)
+void	empty_string_check(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (str[i] == 32)
+	while (str[i])
 	{
 		if (str[i] != 32)
-			return (1);
+			return ;
 		i++;
 	}
-	return (0);
+	error_exit();
 }
 
 char	**ft_get_integers(int ac, char **av)
@@ -93,8 +93,7 @@ char	**ft_get_integers(int ac, char **av)
 			free(tmp);
 		if (!str)
 			exit(1);
-		if (empty_string_check(av[i]) == 0)
-			error_exit();
+		empty_string_check(av[i]);
 		tmp = ft_strdup(str);
 		i++;
 	}
@@ -107,23 +106,19 @@ int	main(int ac, char *av[])
 {
 	char	**integers;
 	t_data	var;
-	char	*instructions;
 
 	if (ac == 1)
 		return (0);
 	integers = ft_get_integers(ac, av);
+	if (!integers)
+		exit(1);
 	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
 	{
 		free_t_data(&var);
 		error_exit();
 	}
-	instructions = get_next_line(0);
-	while (instructions)
-	{
-		ft_call(instructions, &var);
-		instructions = get_next_line(0);
-	}
+	read_instructions(&var);
 	if (is_sorted(&var) == 0)
 		write(2, "KO\n", 3);
 	else
