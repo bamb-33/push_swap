@@ -6,14 +6,16 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:48:46 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 15:12:28 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/19 14:05:47 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void	error_exit(void)
+void	error_exit(t_data *x, char **integers)
 {
+	free_t_data(x);
+	free_integers(integers, x->stack_size);
 	write(2, "Error\n", 6);
 	exit(1);
 }

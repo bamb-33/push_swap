@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 08:55:00 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 19:33:51 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/19 13:18:18 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,28 +70,28 @@ void	final_move(int a, t_data *x)
 void	small_stack(t_data *x)
 {
 	int	i;
-	int	a;
 	int	**s;
 
 	i = 0;
-	a = 0;
 	while (stack_len(x->hm_b))
 	{
 		s = stack_clone(x, x->a, stack_len(x->hm_a));
 		if (x->b[stack_len(x->hm_b) - 1][0] < s[i][0])
 		{
-			final_move(s[i][1], x);
+			i = s[i][1];
+			free_stack_clone(s, stack_len(x->hm_a));
+			final_move(i, x);
 			i = 0;
-			free_stack_clone(s, stack_len(x->hm_a) - 1);
 			continue ;
 		}
 		else if (i == stack_len(x->hm_a) - 1)
 		{
+			free_stack_clone(s, stack_len(x->hm_a));
 			pa(x->a, x->b, x->stack_size, x);
 			i = 0;
-			free_stack_clone(s, stack_len(x->hm_a) - 1);
 			continue ;
 		}
+		free_stack_clone(s, stack_len(x->hm_a));
 		i++;
 	}
 }

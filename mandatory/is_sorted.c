@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:31:53 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/15 22:07:40 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/19 13:54:28 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	is_sorted(t_data *x)
 	int	i;
 
 	i = 0;
+	if (stack_len(x->hm_b) > 0)
+		return (0);
 	while (i < stack_len(x->hm_a) - 1)
 	{
 		if (x->a[i][0] < x->a[i + 1][0])

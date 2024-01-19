@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:34:35 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 18:17:37 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/19 14:06:17 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	rr(t_data *var);
 void	rrr(t_data *var);
 
 int		error(t_data var, char **av);
-void	error_exit(void);
+void	error_exit(t_data *x, char **integers);
 
 int		is_sorted(t_data *x);
 

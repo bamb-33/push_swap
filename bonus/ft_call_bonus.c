@@ -15,7 +15,8 @@
 void	error_cmd(t_data *x)
 {
 	free_t_data(x);
-	error_exit();
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
 void	ft_call(char *str, t_data *x)

@@ -6,7 +6,7 @@
 /*   By: naadou <naadou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 18:34:49 by naadou            #+#    #+#             */
-/*   Updated: 2024/01/16 14:32:04 by naadou           ###   ########.fr       */
+/*   Updated: 2024/01/19 14:09:15 by naadou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	empty_string_check(char *str)
 			return ;
 		i++;
 	}
-	error_exit();
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
 char	**ft_get_integers(int ac, char **av)
@@ -114,10 +115,8 @@ int	main(int ac, char *av[])
 		exit(1);
 	var = init(str_len(integers), integers);
 	if (error(var, integers) == 0)
-	{
-		free_t_data(&var);
-		error_exit();
-	}
+		error_exit(&var, integers);
+	free_integers(integers, var.stack_size);
 	read_instructions(&var);
 	if (is_sorted(&var) == 0)
 		write(2, "KO\n", 3);
